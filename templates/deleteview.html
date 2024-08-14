@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>DELETE BOOK {{book.title}}</h1>
+
+<form action="{% url 'delete' book.id %}" method="post">
+    {% csrf_token %}
+    <h2>ARE YOU SURE?</h2>
+    <input type="submit" value="Confirm delete">
+</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div style="max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); background-color: #f9f9f9;">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 15px;">
+            <label for="username" style="display: block; font-weight: bold; margin-bottom: 5px;">Username</label>
+            <input type="text" name="username" placeholder="Enter your username" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="password" style="display: block; font-weight: bold; margin-bottom: 5px;">Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+
+        <div style="text-align: center;">
+            <input type="submit" value="Login" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

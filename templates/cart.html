@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+{% if not cart_items %}
+    <div class="container text-center mt-5">
+        <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 24px;">YOUR CART IS EMPTY</p>
+    </div>
+{% else %}
+    <section class="vh-100" style="background-color: #fdccbc;">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-10">
+                    <p class="h2 mb-4">Shopping Cart</p>
+
+                    {% for item in cart_items %}
+                    <div class="card mb-4">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <div>
+                                        <p class="fw-normal mb-0">BOOK: {{ item.book.title }}</p>
+                                        <p class="fw-normal mb-0">AUTHOR: {{ item.book.author }}</p>
+                                        <p class="fw-normal mb-0">PRICE: ₹{{ item.book.price }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                    <div class="d-flex">
+                                        <a href="{% url 'decrease_quantity' item.id %}" class="btn btn-light btn-sm">-</a>
+                                        <p class="mx-3">{{ item.quantity }}</p>
+                                        <a href="{% url 'increase_qunatity' item.id %}" class="btn btn-light btn-sm">+</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 d-flex align-items-center justify-content-end">
+                                    <p class="fw-bold">Subtotal: ₹{{ item.book.price * item.quantity }}</p>
+                                    <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger btn-sm ms-3">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <div class="d-flex justify-content-end">
+                        <a href="{% url 'list_books' %}" class="btn btn-light btn-lg me-2">Continue Shopping</a>
+                        <button type="button" class="btn btn-primary btn-lg">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

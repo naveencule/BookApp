@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">{{ book.title }}</h1>
+    
+    <div class="card p-4">
+        <h2 class="card-title">{{ book.title }}</h2>
+        <p class="card-text"><strong>Price:</strong> ₹{{ book.price }}</p>
+        <p class="card-text"><strong>Author:</strong> {{ book.author }}</p>
+    </div>
+    
+    <div class="mt-4">
+        <a href="{% url 'list_books' %}" class="btn btn-primary">Back to List</a>
+    </div>
+</div>
+{% endblock %}

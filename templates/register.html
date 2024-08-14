@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+        <form method="POST" action="{% url 'register' %}"style="max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            {% csrf_token %}
+            <div style="margin-bottom: 15px;">
+                <label for="username" style="display: block; font-weight: bold; margin-bottom: 5px;">Username</label>
+                <input type="text" name="username" placeholder="Enter your username" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+        
+            <div style="margin-bottom: 15px;">
+                <label for="first_name" style="display: block; font-weight: bold; margin-bottom: 5px;">First Name</label>
+                <input type="text" name="first_name" placeholder="Enter your first name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+        
+            <div style="margin-bottom: 15px;">
+                <label for="last_name" style="display: block; font-weight: bold; margin-bottom: 5px;">Last Name</label>
+                <input type="text" name="last_name" placeholder="Enter your last name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+        
+            <div style="margin-bottom: 15px;">
+                <label for="email" style="display: block; font-weight: bold; margin-bottom: 5px;">Email</label>
+                <input type="email" name="email" placeholder="Enter your email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+        
+            <div style="margin-bottom: 15px;">
+                <label for="password" style="display: block; font-weight: bold; margin-bottom: 5px;">Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+        
+            <div style="margin-bottom: 15px;">
+                <label for="password1" style="display: block; font-weight: bold; margin-bottom: 5px;">Confirm Password</label>
+                <input type="password" name="password1" placeholder="Confirm your password" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+        
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+                Register
+            </button>
+        </form>
+        
+
+{% endblock %}

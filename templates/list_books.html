@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Book List</h1>
+    
+    <form method="GET" action="{% url 'search_books' %}" class="d-flex mb-4">
+        <input class="form-control me-2" type="search" name="q" placeholder="Search books..." aria-label="Search" value="{{ query }}">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+
+    <div class="row">
+        {% for book in books %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">{{ book.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Author: {{ book.author }}</h6>
+                    <p class="card-text">
+                        <strong>Price:</strong> ₹{{ book.price }}<br>
+                        <strong>Quantity:</strong> {{ book.quantity }}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'book_details' book.id %}" class="btn btn-outline-primary btn-sm">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
